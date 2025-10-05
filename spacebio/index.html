@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Space Biology Publications Dashboard</title>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+<header>
+  <div class="header-row">
+    <h1 id="appTitle">Space Biology Publications Dashboard</h1>
+    <div class="lang-wrap">
+      <label for="langSelect" class="small" id="langLabel">Language</label>
+      <select id="langSelect" aria-label="Language">
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="ja">日本語</option>
+        <option value="zh">中文</option>
+      </select>
+    </div>
+  </div>
+  <div id="banner" class="badge">Loading…</div>
+</header>
+<main>
+  <div class="tabs" role="tablist">
+    <div class="tab active" data-target="tab-overview" role="tab" aria-selected="true" id="tabLabelOverview">Overview</div>
+    <div class="tab" data-target="tab-explore" role="tab" aria-selected="false" id="tabLabelExplore">Explore Publications</div>
+    <div class="tab" data-target="tab-kg" role="tab" aria-selected="false" id="tabLabelKG">Knowledge Graph</div>
+    <div class="tab" data-target="tab-key" role="tab" aria-selected="false" id="tabLabelKey">Keyword Search</div>
+  </div>
+
+  <section id="tab-overview" class="tabpanel active" role="tabpanel" aria-labelledby="Overview">
+    <div id="overview">
+      <div class="card">
+        <h3 id="headingYear">Publications per Year</h3>
+        <svg id="bar"></svg>
+        <p class="small" id="hintMinBar">Bars have a minimum height of 6px. Unknown year is shown in a lighter color.</p>
+      </div>
+      <div class="card">
+        <h3 id="headingTopics">Top Topics (by title tokens)</h3>
+        <div id="topics" class="chips"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tab-explore" class="tabpanel" role="tabpanel" aria-labelledby="Explore Publications">
+    <div class="card">
+      <div class="controls">
+        <input id="search" type="text" placeholder="Search title…" />
+        <select id="yearFilter"></select>
+      </div>
+      <div class="grid">
+        <div>
+          <div id="list" class="list"></div>
+        </div>
+        <div id="detail">
+          <p class="small" id="msgSelectTitle">Select a title from the left. If online summary fails, a local title-based fallback will appear.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tab-kg" class="tabpanel" role="tabpanel" aria-labelledby="Knowledge Graph">
+    <div class="card">
+      <h3 id="headingKG">Keyword Map</h3>
+      <canvas id="kg"></canvas>
+      <p class="small" id="kgHint">Simple layout with collision reduction for top 40 keywords.</p>
+    </div>
+  </section>
+
+  <section id="tab-key" class="tabpanel" role="tabpanel" aria-labelledby="Keyword Search">
+    <div class="card">
+      <h3 id="headingKey">Keyword Search</h3>
+      <div class="controls toolbar">
+        <input id="kwInput" type="text" placeholder="Enter keywords… (comma or space separated)" />
+        <select id="kwYear"><option value="all">All years</option></select>
+        <div class="pill-group" role="group" aria-label="Match mode">
+          <button id="kwModeAny" class="pill active" data-mode="any" aria-pressed="true">ANY</button>
+          <button id="kwModeAll" class="pill" data-mode="all" aria-pressed="false">ALL</button>
+        </div>
+        <button id="kwClear" class="btn" aria-label="Clear keywords">Clear</button>
+        <button id="kwSave" class="btn" aria-label="Save current keyword set">Save set</button>
+        <select id="kwSaved"></select>
+        <button id="kwDelete" class="btn" aria-label="Delete selected saved set">Delete</button>
+      </div>
+      <div class="chips selected" id="kwSelected"></div>
+      <div id="kwMini" class="mini-wrap">
+        <svg id="kwMiniChart"></svg>
+        <div id="kwStats" class="small"></div>
+      </div>
+      <div class="list" id="kwList"></div>
+    </div>
+  </section>
+</main>
+<script src="./data/publications.js" defer></script>
+<script src="./data/i18n.js" defer></script>
+<script src="./app.js" defer></script>
+</body>
+</html>
