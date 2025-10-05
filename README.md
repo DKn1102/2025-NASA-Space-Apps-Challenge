@@ -1,5 +1,8 @@
 # 2025-NASA-Space-Apps-Challenge
 
+PPT 자료
+SKSA.pptx
+
 사용 방법
 
 1) Git소스를 다운 받는다
