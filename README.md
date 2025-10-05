@@ -1,5 +1,13 @@
 # 2025-NASA-Space-Apps-Challenge
 
+사용 방법
+
+1) Git소스를 다운 받는다
+2) /spacebio/index.html 더블클릭
+3) 검색창에 관심 키워드를 입력 → 결과 리스트/빈도 확인
+4) 데이터 표에서 제목을 눌러 원문 링크로 이동
+
+
 화면 구성
 
 - Overview(개요)
