@@ -1,21 +1,17 @@
 # 2025-NASA-Space-Apps-Challenge
-Space Biology Publications Dashboard (v4.2 – Global Translate)
 
-New in v4.2
-- Global Translate: Language selector (KO/EN ready; ES/FR/JA/ZH scaffolding).
-- All UI labels are translatable; dynamic texts use a translation map when provided.
-- Kept offline-first: translations are bundled as data/i18n.js (no network fetch).
+화면 구성
 
-How to run
-- Unzip and double-click index.html (file://). No server needed.
+- Overview(개요)
+  Top Topics: 논문 제목을 토큰화(불용어 제외)해서 자주 등장하는 단어들을 막대 그래프로 보여줌
+  Topic Filter를 통해 상위 30, 50, 80, 전체 등의 Chip을 볼 수 있으며
+  해당 Chip을 클릭 시 Keyword Search 탭으로 넘어가 해당 문서를 확인할 수 있음
 
-How to add more languages
-- Edit data/i18n.js → window.I18N_RES['<lang>'].ui / .content
-- For dynamic text (e.g., summary templates), add original string → translated string pairs in .content.
+- Explore Publications(논문 탐색)
+  상단 검색창(실시간 필터)
+  리스트 카드에서 제목을 클릭하면 상세 요약이 화면에 표기됨.
 
-Data
-- Raw CSV: data/SB_publication_PMC.csv (raw rows: 607)
-- Normalized data: data/publications.js (window.PUBLICATIONS=[...]) – generated from CSV.
-
-Build scripts (optional)
-- You can regenerate publications.js by running a normalizer script (see previous v4.1 notes).
+- Keyword Search(키워드 검색)
+  여러 키워드를 ANY/ALL 모드로 검색
+  검색 세트를 로컬에 저장/삭제(브라우저 localStorage 사용).
+  작은 미니차트와 결과 리스트 제공.
